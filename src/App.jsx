@@ -1,10 +1,12 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header';
 import Contacts from './components/Contacts';
 
 function App() {
   
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(
+    localStorage.getItem('contacts') ? JSON.parse(localStorage.getItem('contacts')) : []
+  );
   const [contact, setContact] = useState({
      id: '',
      name : '',
@@ -15,12 +17,18 @@ function App() {
      notes : ''
   });
 
+  useEffect(() => {
+    if(contacts.length > 0) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  },[contacts]);
+
   const [error, setError] = useState(false);
 
   const editContact = (contactEdit) => {
       setContact(contactEdit);
   } 
-  
+
   return (
       <div className="container">
         <Header

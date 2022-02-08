@@ -28,7 +28,9 @@ const Contacts = ({contacts,setContacts, editContact}) => {
   const handleDelete = (e) => {
     
     if(isCheckAll) {
-        setContacts([]);
+        if(window.confirm('Seguro que quieres borrar todos los contactos?')) {
+            setContacts([]);
+        }
         return;
     }
 
@@ -50,6 +52,7 @@ const Contacts = ({contacts,setContacts, editContact}) => {
         setContacts([]);
         return;
     }
+
     setContacts(updateContacts);
   }
 
@@ -57,7 +60,7 @@ const Contacts = ({contacts,setContacts, editContact}) => {
       <div className="contacts">
         <h2 className='text-center'>Contactos Existentes</h2>
 
-        <p className="text-center">Resultados: <span>{contacts.length}</span></p>
+        <p className="text-center">Resultados: <span className="bold">{contacts.length}</span></p>
 
 
         <div className="container-contacts">
