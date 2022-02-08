@@ -1,11 +1,14 @@
 import React from 'react';
+import { useState } from 'react';
 
-const Contact = ({contact, editContact}) => {
+const Contact = ({contact, editContact, setIsCheckAll}) => {
   
-  const {name, surname , email } = contact;
+  const {id, name, surname , email } = contact;
 
-  const handleCheckAll = (e) => {
-    console.log("test");
+  const handleDetectCheck = (e) => {
+    if(!e.target.checked) {
+      setIsCheckAll(false);
+    }
   }
 
 
@@ -15,9 +18,10 @@ const Contact = ({contact, editContact}) => {
             <li>{surname}</li>
             <li>{email}</li>
             <li onClick={() => editContact(contact)}><i className="fa fa-edit"></i></li>
-            <li><input 
+            <li><input
+                  data-id = {id}
                   type="checkbox"
-          
+                  onClick = {(e) => handleDetectCheck(e)}
                   />
             </li>
             

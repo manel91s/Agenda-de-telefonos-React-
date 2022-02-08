@@ -94,9 +94,14 @@ form > legend {
 .header-contact div{
   font-weight: 700;
 }
-.header-contact .check-contact{
+.header-contact .accions{
    display:flex;
-   align-items: center;
+   flex-direction: column;
+}
+
+.accions > i {
+  margin-bottom: 10px;
+  cursor: pointer;
 }
 
 ul {

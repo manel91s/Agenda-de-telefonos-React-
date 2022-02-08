@@ -36,6 +36,7 @@ function App() {
         <main className="container-gray">
           <Contacts
              contacts = {contacts}
+             setContacts = {setContacts}
              editContact = {editContact}
           ></Contacts>
         </main>
